@@ -1,3 +1,5 @@
+using GraphiQl;
+using GraphQL.Server;
 using GraphQL.Types;
 using GraphQlProject.Interfaces;
 using GraphQlProject.Query;
@@ -50,14 +52,8 @@ namespace GraphQlProject
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseGraphiQl("/graphql");
+            app.UseGraphQL<ISchema>();
         }
     }
 }
