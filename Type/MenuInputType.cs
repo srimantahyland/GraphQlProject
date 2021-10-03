@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace GraphQlProject.Type
 {
-    public class ProductInputType : InputObjectGraphType
+    public class MenuInputType : InputObjectGraphType
     {
-        public ProductInputType()
+        public MenuInputType()
         {
             Field<IntGraphType>("id");
             Field<StringGraphType>("name");
-            Field<FloatGraphType>("price");
+            Field<StringGraphType>("imageUrl");
         }
     }
 }

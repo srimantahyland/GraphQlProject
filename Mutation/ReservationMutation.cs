@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace GraphQlProject.Mutation
 {
-    public class ProductMutation : ObjectGraphType
+    public class ReservationMutation : ObjectGraphType
     {
-        public ProductMutation(IProduct productService)
+        public ReservationMutation(IReservation reservationService)
         {
-            Field<ProductType>("createProduct", arguments: new QueryArguments(new QueryArgument<ProductInputType> { Name = "product" }),
+            Field<ReservationType>("createReservation", arguments: new QueryArguments(new QueryArgument<ReservationInputType> { Name = "reservation" }),
                 resolve: context =>
                 {
-                    return productService.AddProduct(context.GetArgument<Product>("product"));
+                    return reservationService.AddReservation(context.GetArgument<Reservation>("reservation"));
                 });
 
-            Field<ProductType>("updateProduct", arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" },
-                new QueryArgument<ProductInputType> { Name = "product" }),
+            /*Field<MenuType>("updateProduct", arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" },
+                new QueryArgument<MenuInputType> { Name = "product" }),
                 resolve: context =>
                 {
-                    var productObject = context.GetArgument<Product>("product");
+                    var productObject = context.GetArgument<SubMenu>("product");
                     var productId = context.GetArgument<int>("id");
                     return productService.UpdateProduct(productId, productObject);
                 });
@@ -35,7 +35,7 @@ namespace GraphQlProject.Mutation
                    var productId = context.GetArgument<int>("id");
                    productService.DeleteProduct(productId);
                    return "The product against the id " + productId + " has been deleted.";
-               });
+               });*/
         }
     }
 }
